@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "Customer.h"
-
+/*
 int main() {
 
     Customer customer("Olivier");
@@ -13,3 +13,4 @@ int main() {
 
     return 0;
 }
+ */

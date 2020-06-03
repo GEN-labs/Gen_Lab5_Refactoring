@@ -10,6 +10,7 @@ execute_process(COMMAND "${CMAKE_COMMAND}" --build .
         WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download"
         )
 
+
 # Prevent GoogleTest from overriding our compiler/linker options
 # when building with Visual Studio
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
@@ -31,5 +32,5 @@ endif()
 
 # Now simply link your own targets against gtest, gmock,
 # etc. as appropriate
-
-add_executable(Labo5 main.cpp Customer.cpp Customer.h Movie.cpp Movie.h Rental.h)
+add_executable(Labo5 main.cpp Customer.cpp Customer.h Movie.cpp Movie.h Rental.h CustomerTest.cpp)
+target_link_libraries(Labo5 gtest gmock_main)
