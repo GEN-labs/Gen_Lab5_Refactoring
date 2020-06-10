@@ -17,7 +17,7 @@ string Customer::statement()
 
     for(Rental rental : _rentals ){
 
-        double thisAmount = rental.getMovie().getAmount(rental.getDaysRented());
+        double thisAmount = rental.getAmount();
 
         // add frequent renter points
         frequentRenterPoints++;

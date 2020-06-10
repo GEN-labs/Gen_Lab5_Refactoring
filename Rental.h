@@ -10,6 +10,10 @@ public:
     int getDaysRented() const;
     const Movie& getMovie() const;
 
+    double getAmount() const {
+        return _movie.getAmount(_daysRented);
+    }
+
 private:
     Movie _movie;
     int _daysRented;
