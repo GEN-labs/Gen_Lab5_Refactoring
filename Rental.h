@@ -13,6 +13,11 @@ public:
     double getAmount() const {
         return _movie.getAmount(_daysRented);
     }
+    int getRenterPoints(){
+        if(typeid(*_movie.getMovieType()) == typeid(Movie::NewReleaseMovie) && _daysRented > 1 )
+            return 2;
+        return 1;
+    }
 
 private:
     Movie _movie;

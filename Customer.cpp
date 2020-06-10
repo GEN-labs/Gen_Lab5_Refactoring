@@ -18,13 +18,7 @@ string Customer::statement()
     for(Rental rental : _rentals ){
 
         double thisAmount = rental.getAmount();
-
-        // add frequent renter points
-        frequentRenterPoints++;
-        // add bonus for a two day new release rental
-
-        if(typeid(*rental.getMovie().getMovieType()) == typeid(Movie::NewReleaseMovie) && rental.getDaysRented() > 1 )
-            frequentRenterPoints++;
+        frequentRenterPoints += rental.getRenterPoints();
 
         // show figures for this rental
         result << "\t" << rental.getMovie().getTitle() << "\t"
