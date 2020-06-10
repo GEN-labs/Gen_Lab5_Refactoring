@@ -2,37 +2,70 @@
 #ifndef MOVIE_H
 #define MOVIE_H
 #include <string>
+#include <memory>
 
 class Movie {
+
 public:
-    static const int CHILDRENS   = 2;
-    static const int REGULAR     = 0;
-    static const int NEW_RELEASE = 1;
+    class MovieType {
+    public:
+        virtual double getAmount(int daysRented) = 0;
+    };
 
-    Movie( const std::string& title, int priceCode = REGULAR );
+    class RegularMovie : public MovieType {
+    public:
+        double getAmount(int daysRented) override {
+            double amount = 2;
+            if ( daysRented > 2 )
+                amount += ( daysRented - 2 ) * 1.5 ;
+            return amount;
+        }
+    };
 
-    int getPriceCode() const;
-    void setPriceCode( int arg );
+    class ChildrensMovie : public MovieType {
+    public:
+        double getAmount(int daysRented) override {
+            double amount = 1.5;
+            if ( daysRented > 3 )
+                amount += ( daysRented - 3 ) * 1.5;
+            return amount;
+        }
+    };
+
+    class NewReleaseMovie : public MovieType {
+    public:
+        double getAmount(int daysRented) override {
+            return daysRented * 3;
+        }
+    };
+
+    Movie( const std::string& title, std::shared_ptr<MovieType> movieType = std::make_shared<RegularMovie>())
+    : _title(title), _movieType(movieType)
+    {}
+
+    std::shared_ptr<Movie::MovieType> getMovieType() const;
+
+    //TODO : inline plus bas
+    double getAmount(int daysRented) const{
+        return _movieType->getAmount(daysRented);
+    }
+    void setMovieType( std::shared_ptr<MovieType> arg );
     std::string getTitle() const;
 
 private:
     std::string _title;
-    int _priceCode;
+    std::shared_ptr<MovieType> _movieType;
+
 };
 
-inline Movie::
-Movie( const std::string& title, int priceCode )
-        : _title( title )
-        , _priceCode( priceCode )
-{}
-
-inline int Movie::
-getPriceCode() const { return _priceCode; }
+inline std::shared_ptr<Movie::MovieType> Movie::
+getMovieType() const { return _movieType; }
 
 inline void Movie::
-setPriceCode( int arg ) { _priceCode = arg; }
+setMovieType( std::shared_ptr<MovieType> arg  ) { _movieType = arg; }
 
 inline std::string Movie::
 getTitle() const { return _title; }
+
 
 #endif // MOVIE_H

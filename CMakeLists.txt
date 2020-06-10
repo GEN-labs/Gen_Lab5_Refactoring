@@ -11,6 +11,7 @@ execute_process(COMMAND "${CMAKE_COMMAND}" --build .
         )
 
 
+set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
 # Prevent GoogleTest from overriding our compiler/linker options
 # when building with Visual Studio
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
