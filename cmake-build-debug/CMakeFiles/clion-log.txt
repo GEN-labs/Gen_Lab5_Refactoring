@@ -3,7 +3,7 @@
 -- Generating done
 -- Build files have been written to: C:/Users/mle/Desktop/COURS/2eme/SEMESTRE 2/GEN/Labos/Gen_Lab5_Refactoring/cmake-build-debug/googletest-download
 [ 11%] Performing update step for 'googletest'
-Current branch refactor is up to date.
+Current branch mockingMovieType is up to date.
 [ 22%] No configure step for 'googletest'
 [ 33%] No build step for 'googletest'
 [ 44%] No install step for 'googletest'
