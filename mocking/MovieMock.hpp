@@ -11,6 +11,8 @@
 class MovieMock : public Movie {
 public:
     MOCK_METHOD(std::string, getTitle, (),(const));
+    MOCK_METHOD(double, getAmount, (int),(const));
+    MOCK_METHOD(std::shared_ptr<Movie::MovieType>, getMovieType, (),(const));
 };
 
 

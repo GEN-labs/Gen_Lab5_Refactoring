@@ -4,7 +4,7 @@
 #include "gtest/gtest.h"
 #include <string>
 #include "../mocking/MovieTypeMock.hpp"
-#include "../Movie.h"
+
 using ::testing::Return;
 
 TEST(MovieGetAmountTest, unitaire){

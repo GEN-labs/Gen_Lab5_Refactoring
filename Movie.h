@@ -43,6 +43,11 @@ public:
     : _title(title), _movieType(movieType)
     {}
 
+    //Empty constructor
+    Movie(){
+
+    }
+
     std::shared_ptr<Movie::MovieType> getMovieType() const;
 
     //TODO : inline plus bas
@@ -62,6 +67,7 @@ getMovieType() const { return _movieType; }
 
 inline std::string Movie::
 getTitle() const { return _title; }
+
 
 
 #endif // MOVIE_H
