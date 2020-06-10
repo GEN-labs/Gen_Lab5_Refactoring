@@ -36,5 +36,16 @@ TEST(MovieGetAmountTest, unitaire){
     ASSERT_DOUBLE_EQ(movie_3.getAmount(1), 3);
     ASSERT_DOUBLE_EQ(movie_3.getAmount(4), 12);
 }
+TEST(MovieTitle, unit){
+    std::string name = "Jean-Cul GodeHard - Pierro le Foutre";
+    std::shared_ptr<RegularMovieMock> regularMovieMock = std::make_shared<RegularMovieMock>();
+    Movie movie_1(name, regularMovieMock);
+    ASSERT_EQ(movie_1.getTitle(), name);
+}
 
+
+TEST(MovieGetMovieType, unit){
+    std::shared_ptr<RegularMovieMock> regularMovieMock = std::make_shared<RegularMovieMock>();
+
+}
 
