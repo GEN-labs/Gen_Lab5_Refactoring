@@ -43,9 +43,3 @@ TEST(MovieTitle, unit){
     ASSERT_EQ(movie_1.getTitle(), name);
 }
 
-
-TEST(MovieGetMovieType, unit){
-    std::shared_ptr<RegularMovieMock> regularMovieMock = std::make_shared<RegularMovieMock>();
-
-}
-
