@@ -12,26 +12,22 @@ string Customer::statement()
 {
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    vector< Rental >::iterator iter = _rentals.begin();
-    vector< Rental >::iterator iter_end = _rentals.end();
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
-    for ( ; iter != iter_end; ++iter ) {
-        double thisAmount = 0;
-        Rental each = *iter;
 
+    for(Rental rental : _rentals ){
 
-        thisAmount = each.getMovie().getAmount(each.getDaysRented());
+        double thisAmount = rental.getMovie().getAmount(rental.getDaysRented());
 
         // add frequent renter points
         frequentRenterPoints++;
         // add bonus for a two day new release rental
 
-        if(typeid(*each.getMovie().getMovieType()) == typeid(Movie::NewReleaseMovie) && each.getDaysRented() > 1 )
+        if(typeid(*rental.getMovie().getMovieType()) == typeid(Movie::NewReleaseMovie) && rental.getDaysRented() > 1 )
             frequentRenterPoints++;
 
         // show figures for this rental
-        result << "\t" << each.getMovie().getTitle() << "\t"
+        result << "\t" << rental.getMovie().getTitle() << "\t"
                << thisAmount << "\n";
         totalAmount += thisAmount;
     }
