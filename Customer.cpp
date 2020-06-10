@@ -4,8 +4,6 @@
 #include "Customer.h"
 
 using std::ostringstream;
-using std::vector;
-
 using namespace std;
 
 string Customer::statement()
