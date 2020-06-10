@@ -49,7 +49,6 @@ public:
     double getAmount(int daysRented) const{
         return _movieType->getAmount(daysRented);
     }
-    void setMovieType( std::shared_ptr<MovieType> arg );
     std::string getTitle() const;
 
 private:
@@ -60,9 +59,6 @@ private:
 
 inline std::shared_ptr<Movie::MovieType> Movie::
 getMovieType() const { return _movieType; }
-
-inline void Movie::
-setMovieType( std::shared_ptr<MovieType> arg  ) { _movieType = arg; }
 
 inline std::string Movie::
 getTitle() const { return _title; }
