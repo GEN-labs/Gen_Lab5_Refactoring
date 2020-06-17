@@ -7,14 +7,20 @@ class Rental {
 public:
     Rental(std::shared_ptr<Movie> movie, int daysRented );
 
+    Rental();
+
     std::shared_ptr<Movie> getMovie() const;
-    double getAmount() const {
+    virtual double getAmount() const {
         return _movie->getAmount(_daysRented);
     }
-    int getRenterPoints(){
+    virtual int getRenterPoints() const {
         if(typeid(*_movie->getMovieType()) == typeid(Movie::NewReleaseMovie) && _daysRented > 1 )
             return 2;
         return 1;
+    }
+
+    virtual std::string getMovieTitle() const {
+        return _movie->getTitle();
     }
 
 private:
@@ -31,5 +37,7 @@ Rental( std::shared_ptr<Movie> movie, int daysRented )
 
 inline std::shared_ptr<Movie> Rental::
 getMovie() const { return _movie; }
+
+inline Rental::Rental() {}
 
 #endif // RENTAL_H

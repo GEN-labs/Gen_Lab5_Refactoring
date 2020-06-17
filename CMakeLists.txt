@@ -34,6 +34,6 @@ endif()
 # Now simply link your own targets against gtest, gmock,
 # etc. as appropriate
 
-add_executable(Labo5 main.cpp Customer.cpp Customer.h Movie.cpp Movie.h Rental.h test/CustomerTest.cpp mocking/MovieMock.hpp mocking/MovieTypeMock.hpp test/MovieUnitTest.cpp test/MovieTypeTest.cpp test/RentalTest.cpp)
+add_executable(Labo5 main.cpp Customer.cpp Customer.h Movie.cpp Movie.h Rental.h test/CustomerTest.cpp mocking/MovieMock.hpp mocking/MovieTypeMock.hpp test/MovieUnitTest.cpp test/MovieTypeTest.cpp test/RentalTest.cpp mocking/RentalMock.hpp)
 
 target_link_libraries(Labo5 gtest gmock_main)

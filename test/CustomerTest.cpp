@@ -4,21 +4,44 @@
 #include "../Rental.h"
 
 #include "gtest/gtest.h"
+#include "../mocking/RentalMock.hpp"
+
+using ::testing::Return;
 
 TEST(CustomerTest, simple){
 
 
-   /* std::shared_ptr<Movie::RegularMovie> regularMovie = std::make_shared<Movie::RegularMovie>();
-    std::shared_ptr<Movie::ChildrensMovie> childrensMovie = std::make_shared<Movie::ChildrensMovie>();
-    std::shared_ptr<Movie::NewReleaseMovie> newReleaseMovie = std::make_shared<Movie::NewReleaseMovie>();
 
-    Customer customer("Olivier");
-    customer.addRental( Rental( Movie("Karate Kid"), 7));
-    customer.addRental( Rental( Movie( "Avengers: Endgame", newReleaseMovie ), 5));
-    customer.addRental( Rental( Movie("Snow White", childrensMovie), 3 ));
+    std::shared_ptr<RentalMock> rentalMock1 = std::make_shared<RentalMock>();
+    std::shared_ptr<RentalMock> rentalMock2 = std::make_shared<RentalMock>();
+    EXPECT_CALL(*rentalMock1, getMovieTitle()).WillRepeatedly(Return("Nicolas et ses amis virutels"));
+    EXPECT_CALL(*rentalMock2, getMovieTitle()).WillRepeatedly(Return("Lucas sans famille"));
 
-    ASSERT_EQ(customer.statement(), "Rental Record for Olivier\n\tKarate Kid\t9.5\n\tAvengers: Endgame\t15\n\tSnow White"
-                                    "\t1.5\nAmount owed is 26\nYou earned 4 frequent renter points");*/
+    EXPECT_CALL(*rentalMock1, getRenterPoints()).WillRepeatedly(Return(1));
+    EXPECT_CALL(*rentalMock2, getRenterPoints()).WillRepeatedly(Return(2));
+
+    EXPECT_CALL(*rentalMock1, getAmount()).WillRepeatedly(Return(10.5));
+    EXPECT_CALL(*rentalMock2, getAmount()).WillRepeatedly(Return(55.0));
+
+    std::shared_ptr<Rental> rental1 = rentalMock1;
+    std::shared_ptr<Rental> rental2 = rentalMock2;
+
+    Customer customer("Moris la malice");
+    customer.addRental(rental1);
+    customer.addRental(rental2);
+
+    std::string assertString = "Rental Record for Moris la malice\n\t"
+                               "Nicolas et ses amis virutels\t10.5\n\t"
+                               "Lucas sans famille\t55\n"
+                               "Amount owed is 65.5\n"
+                               "You earned 3 frequent renter points";
+
+    ASSERT_EQ(customer.statement(), assertString);
+}
+
+TEST(GetName, simple){
+    Customer c("Pirlouit");
+    ASSERT_EQ(c.getName(),"Pirlouit");
 }
 
 

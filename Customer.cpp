@@ -1,6 +1,5 @@
 // Customer.cpp
 #include <sstream>
-#include <vector>
 #include "Customer.h"
 
 using std::ostringstream;
@@ -13,13 +12,13 @@ string Customer::statement()
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
 
-    for(Rental rental : _rentals ){
+    for(std::shared_ptr<Rental> rental : _rentals ){
 
-        double thisAmount = rental.getAmount();
-        frequentRenterPoints += rental.getRenterPoints();
+        double thisAmount = rental->getAmount();
+        frequentRenterPoints += rental->getRenterPoints();
 
         // show figures for this rental
-        result << "\t" << rental.getMovie()->getTitle() << "\t"
+        result << "\t" << rental->getMovieTitle() << "\t"
                << thisAmount << "\n";
         totalAmount += thisAmount;
     }

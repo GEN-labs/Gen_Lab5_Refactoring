@@ -3,7 +3,12 @@
 -- Generating done
 -- Build files have been written to: C:/Users/mle/Desktop/COURS/2eme/SEMESTRE 2/GEN/Labos/Gen_Lab5_Refactoring/cmake-build-debug/googletest-download
 [ 11%] Performing update step for 'googletest'
-Current branch master is up to date.
+From https://github.com/google/googletest
+   13a433a9..549c5d06  master     -> origin/master
+ + 4015b375...1cbeae4c 77A9B20B4C1E02FAC90D1D942E1D4C18 -> origin/77A9B20B4C1E02FAC90D1D942E1D4C18  (forced update)
+ + 470e4b26...264f3184 E5E9B92DC71B262387A82177344D43FD -> origin/E5E9B92DC71B262387A82177344D43FD  (forced update)
+First, rewinding head to replay your work on top of it...
+Fast-forwarded master to origin/master.
 [ 22%] No configure step for 'googletest'
 [ 33%] No build step for 'googletest'
 [ 44%] No install step for 'googletest'
