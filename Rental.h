@@ -5,29 +5,31 @@
 
 class Rental {
 public:
-    Rental( const Movie& movie, int daysRented );
+    Rental(std::shared_ptr<Movie> movie, int daysRented );
 
-    const Movie& getMovie() const;
+    std::shared_ptr<Movie> getMovie() const;
     double getAmount() const {
-        return _movie.getAmount(_daysRented);
+        return _movie->getAmount(_daysRented);
     }
     int getRenterPoints(){
-        if(typeid(*_movie.getMovieType()) == typeid(Movie::NewReleaseMovie) && _daysRented > 1 )
+        if(typeid(*_movie->getMovieType()) == typeid(Movie::NewReleaseMovie) && _daysRented > 1 )
             return 2;
         return 1;
     }
 
 private:
-    Movie _movie;
+    std::shared_ptr<Movie> _movie;
     int _daysRented;
 };
 
 inline Rental::
-Rental( const Movie& movie, int daysRented )
+Rental( std::shared_ptr<Movie> movie, int daysRented )
         : _movie( movie )
-        , _daysRented( daysRented ) {}
+        , _daysRented( daysRented ) {
 
-inline const Movie& Rental::
+}
+
+inline std::shared_ptr<Movie> Rental::
 getMovie() const { return _movie; }
 
 #endif // RENTAL_H

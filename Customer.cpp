@@ -19,7 +19,7 @@ string Customer::statement()
         frequentRenterPoints += rental.getRenterPoints();
 
         // show figures for this rental
-        result << "\t" << rental.getMovie().getTitle() << "\t"
+        result << "\t" << rental.getMovie()->getTitle() << "\t"
                << thisAmount << "\n";
         totalAmount += thisAmount;
     }

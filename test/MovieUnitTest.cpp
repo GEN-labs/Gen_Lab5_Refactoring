@@ -15,6 +15,10 @@ TEST(MovieGetAmountTest, unitaire){
     std::shared_ptr<ChildrensMovieMock> childrensMovieMock = std::make_shared<ChildrensMovieMock>();
     std::shared_ptr<NewReleaseMovieMock> newReleaseMovieMock = std::make_shared<NewReleaseMovieMock>();
 
+    std::shared_ptr<Movie::MovieType> regularMovie = regularMovieMock;
+    std::shared_ptr<Movie::MovieType> childrensMovie = childrensMovieMock;
+    std::shared_ptr<Movie::MovieType> newReleaseMovie = newReleaseMovieMock;
+
 
     EXPECT_CALL(*regularMovieMock, getAmount(1)).WillRepeatedly(Return(2));
     EXPECT_CALL(*regularMovieMock, getAmount(4)).WillRepeatedly(Return(3));
@@ -25,9 +29,10 @@ TEST(MovieGetAmountTest, unitaire){
     EXPECT_CALL(*newReleaseMovieMock, getAmount(1)).WillRepeatedly(Return(3));
     EXPECT_CALL(*newReleaseMovieMock, getAmount(4)).WillRepeatedly(Return(12));
 
-    Movie movie_1(name, regularMovieMock);
-    Movie movie_2(name, childrensMovieMock);
-    Movie movie_3(name, newReleaseMovieMock);
+
+    Movie movie_1(name, regularMovie);
+    Movie movie_2(name, childrensMovie);
+    Movie movie_3(name, newReleaseMovie);
 
     ASSERT_DOUBLE_EQ(movie_1.getAmount(1), 2);
     ASSERT_DOUBLE_EQ(movie_1.getAmount(4), 3);
@@ -39,13 +44,15 @@ TEST(MovieGetAmountTest, unitaire){
 TEST(MovieTitle, unit){
     std::string name = "Jean-Cul GodeHard - Pierro le Foutre";
     std::shared_ptr<RegularMovieMock> regularMovieMock = std::make_shared<RegularMovieMock>();
-    Movie movie_1(name, regularMovieMock);
+    std::shared_ptr<Movie::MovieType> regularMovie = regularMovieMock;
+    Movie movie_1(name, regularMovie);
     ASSERT_EQ(movie_1.getTitle(), name);
 }
 
 TEST(MovieGetMovieType, unit){
     std::shared_ptr<RegularMovieMock> regularMovieMock = std::make_shared<RegularMovieMock>();
-    Movie movie_1("Coco l'asticot", regularMovieMock);
-    ASSERT_EQ(movie_1.getMovieType(), regularMovieMock);
+    std::shared_ptr<Movie::MovieType> regularMovie = regularMovieMock;
+    Movie movie_1("Coco l'asticot", regularMovie);
+    ASSERT_EQ(movie_1.getMovieType(), regularMovie);
 
 }

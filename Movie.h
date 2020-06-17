@@ -50,10 +50,8 @@ public:
 
     std::shared_ptr<Movie::MovieType> getMovieType() const;
 
-    //TODO : inline plus bas
-    double getAmount(int daysRented) const{
-        return _movieType->getAmount(daysRented);
-    }
+    /* Virtual because we want to call the method from the mockup version */
+    virtual double getAmount(int daysRented) const;
     std::string getTitle() const;
 
 private:
@@ -61,6 +59,11 @@ private:
     std::shared_ptr<MovieType> _movieType;
 
 };
+
+
+inline double Movie::getAmount(int daysRented) const {
+    return _movieType->getAmount(daysRented);
+}
 
 inline std::shared_ptr<Movie::MovieType> Movie::
 getMovieType() const { return _movieType; }
