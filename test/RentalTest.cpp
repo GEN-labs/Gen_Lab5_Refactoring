@@ -55,6 +55,17 @@ TEST(getRenterPoints, unitaire){
 
 TEST(GetMovie, unitaire) {
 
+    std::shared_ptr<Movie::RegularMovie> regularMovie = std::make_shared<Movie::RegularMovie>();
 
+    std::shared_ptr<MovieMock> movieMock = std::make_shared<MovieMock>();
+
+    EXPECT_CALL(*movieMock, getMovieType()).WillRepeatedly(Return(regularMovie));
+    EXPECT_CALL(*movieMock, getTitle()).WillRepeatedly(Return("Titre de film"));
+
+
+    std::shared_ptr<Movie> movie = movieMock;
+    Rental rental(movie, 1);
+    ASSERT_EQ(rental.getMovie()->getTitle(), movieMock->getTitle());
+    ASSERT_EQ(rental.getMovie()->getMovieType(), movieMock->getMovieType());
 
 }

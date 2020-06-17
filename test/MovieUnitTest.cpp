@@ -56,3 +56,9 @@ TEST(MovieGetMovieType, unit){
     ASSERT_EQ(movie_1.getMovieType(), regularMovie);
 
 }
+
+TEST(EqualMovie, unitaire) {
+    Movie m1("ABC");
+    Movie m2("ABC");
+    ASSERT_EQ(m1, m2);
+}

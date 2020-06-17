@@ -52,7 +52,7 @@ public:
 
     /* Virtual because we want to call the method from the mockup version */
     virtual double getAmount(int daysRented) const;
-    std::string getTitle() const;
+    virtual std::string getTitle() const;
 
 private:
     std::string _title;
@@ -71,6 +71,12 @@ getMovieType() const { return _movieType; }
 inline std::string Movie::
 getTitle() const { return _title; }
 
+inline bool operator== (const Movie& lhs, const Movie& rhs){
+    return (
+            lhs.getTitle() == rhs.getTitle() &&
+            typeid(lhs.getMovieType()) == typeid(rhs.getMovieType())
+    );
+}
 
 
 #endif // MOVIE_H
