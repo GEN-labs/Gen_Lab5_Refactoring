@@ -48,7 +48,7 @@ public:
 
     }
 
-    std::shared_ptr<Movie::MovieType> getMovieType() const;
+    virtual std::shared_ptr<Movie::MovieType> getMovieType() const;
 
     /* Virtual because we want to call the method from the mockup version */
     virtual double getAmount(int daysRented) const;

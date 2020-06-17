@@ -25,8 +25,36 @@ TEST(GetAmountTest, unitaire) {
 
 TEST(getRenterPoints, unitaire){
 
+    std::shared_ptr<Movie::RegularMovie> regularMovie = std::make_shared<Movie::RegularMovie>();
+    std::shared_ptr<Movie::NewReleaseMovie> newRelease = std::make_shared<Movie::NewReleaseMovie>();
+
+
+
+    /* Check with the regularMovieType behavior */
+    std::shared_ptr<MovieMock> movieMockRegular = std::make_shared<MovieMock>();
+    EXPECT_CALL(*movieMockRegular, getMovieType()).WillRepeatedly(Return(regularMovie));
+
+    std::shared_ptr<Movie> movieRegular = movieMockRegular;
+    Rental rental(movieRegular, 1);
+
+    ASSERT_EQ(rental.getRenterPoints(),1);
+
+
+    /* Check with the newRelease behavior */
+    std::shared_ptr<MovieMock> movieMockNewRelease = std::make_shared<MovieMock>();
+    EXPECT_CALL(*movieMockRegular, getMovieType()).WillRepeatedly(Return(newRelease));
+
+    std::shared_ptr<Movie> movieNewRelease = movieMockRegular;
+    Rental rental2(movieNewRelease, 2);
+    Rental rental3(movieNewRelease, 1);
+
+    ASSERT_EQ(rental2.getRenterPoints(),2);
+    ASSERT_EQ(rental3.getRenterPoints(),1);
+
 }
 
 TEST(GetMovie, unitaire) {
+
+
 
 }
