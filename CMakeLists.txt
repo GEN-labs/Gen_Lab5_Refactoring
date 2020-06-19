@@ -11,11 +11,11 @@ execute_process(COMMAND "${CMAKE_COMMAND}" --build .
         )
 
 
-set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
 # Prevent GoogleTest from overriding our compiler/linker options
 # when building with Visual Studio
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
+set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
 # Add googletest directly to our build. This adds the following targets:
 # gtest, gtest_main, gmock and gmock_main
 add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
@@ -34,6 +34,6 @@ endif()
 # Now simply link your own targets against gtest, gmock,
 # etc. as appropriate
 
-add_executable(Labo5 main.cpp Customer.cpp Customer.h Movie.cpp Movie.h Rental.h test/CustomerTest.cpp mocking/MovieMock.hpp mocking/MovieTypeMock.hpp test/MovieUnitTest.cpp test/MovieTypeTest.cpp test/RentalTest.cpp mocking/RentalMock.hpp)
+add_executable(Labo5 main.cpp Customer.cpp Customer.h Movie.h Rental.h test/CustomerTest.cpp mocking/MovieMock.hpp mocking/MovieTypeMock.hpp test/MovieUnitTest.cpp test/MovieTypeTest.cpp test/RentalTest.cpp mocking/RentalMock.hpp)
 
 target_link_libraries(Labo5 gtest gmock_main)
