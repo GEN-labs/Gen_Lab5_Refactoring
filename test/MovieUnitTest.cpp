@@ -1,6 +1,3 @@
-//
-// Created by mle on 10.06.2020.
-//
 #include "gtest/gtest.h"
 #include <string>
 #include "../mocking/MovieTypeMock.hpp"
@@ -55,10 +52,4 @@ TEST(MovieGetMovieType, unit){
     Movie movie_1("Coco l'asticot", regularMovie);
     ASSERT_EQ(movie_1.getMovieType(), regularMovie);
 
-}
-
-TEST(EqualMovie, unitaire) {
-    Movie m1("ABC");
-    Movie m2("ABC");
-    ASSERT_EQ(m1, m2);
 }

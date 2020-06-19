@@ -1,7 +1,3 @@
-//
-// Created by mle on 17.06.2020.
-//
-
 #ifndef LABO5_RENTALMOCK_HPP
 #define LABO5_RENTALMOCK_HPP
 

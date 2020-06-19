@@ -60,7 +60,6 @@ private:
 
 };
 
-
 inline double Movie::getAmount(int daysRented) const {
     return _movieType->getAmount(daysRented);
 }
@@ -70,13 +69,5 @@ getMovieType() const { return _movieType; }
 
 inline std::string Movie::
 getTitle() const { return _title; }
-
-inline bool operator== (const Movie& lhs, const Movie& rhs){
-    return (
-            lhs.getTitle() == rhs.getTitle() &&
-            typeid(lhs.getMovieType()) == typeid(rhs.getMovieType())
-    );
-}
-
 
 #endif // MOVIE_H

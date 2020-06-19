@@ -1,7 +1,3 @@
-//
-// Created by mle on 10.06.2020.
-//
-
 #ifndef LABO5_MOVIETYPEMOCK_HPP
 #define LABO5_MOVIETYPEMOCK_HPP
 

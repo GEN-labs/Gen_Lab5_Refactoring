@@ -1,7 +1,3 @@
-//
-// Created by nichu on 10.06.2020.
-//
-
 #include "../Movie.h"
 
 #include "gtest/gtest.h"
